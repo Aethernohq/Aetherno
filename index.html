@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aetherno — AI Voice Automation for HVAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A3C8F;
+      --blue-dark: #0e2460;
+      --blue-light: #2451b3;
+      --blue-glow: rgba(26, 60, 143, 0.4);
+      --white: #ffffff;
+      --off-white: #f0f4ff;
+      --muted: rgba(255,255,255,0.6);
+      --border: rgba(255,255,255,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #060d1f;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── STARS BACKGROUND ── */
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--dur) ease-in-out infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: var(--op); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(6, 13, 31, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      height: 38px;
+      width: auto;
+      filter: brightness(1.1);
+    }
+
+    .nav-btn {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-btn:hover {
+      background: var(--blue-light);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,60,143,0.35) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(100,140,255,0.9);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #6a9fff 0%, #ffffff 50%, #6a9fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid rgba(100,140,255,0.3);
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,60,143,0.6);
+    }
+
+    .btn-primary:hover::before { opacity: 1; }
+
+    .hero-badges {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1s;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4a8fff;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 5%;
+    }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #4a8fff;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto;
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      background: linear-gradient(180deg, transparent 0%, rgba(26,60,143,0.08) 100%);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(100,140,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-number span {
+      color: #4a8fff;
+    }
+
+    .stat-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── SOLUTION ── */
+    .solution {
+      background: rgba(26,60,143,0.06);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #1A3C8F, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(100,140,255,0.35);
+      transform: translateY(-4px);
+    }
+
+    .benefit-card:hover::before { opacity: 1; }
+
+    .benefit-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .benefit-title {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .benefit-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      counter-reset: step;
+    }
+
+    .step-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: background 0.2s;
+    }
+
+    .step-item:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(100,140,255,0.25);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .step-content-title {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-content-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      background: linear-gradient(180deg, rgba(26,60,143,0.08) 0%, transparent 100%);
+    }
+
+    .pricing-card {
+      margin-top: 3rem;
+      border: 1px solid rgba(100,140,255,0.3);
+      border-radius: 16px;
+      padding: 3rem;
+      background: linear-gradient(135deg, rgba(26,60,143,0.2) 0%, rgba(6,13,31,0.8) 100%);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      max-width: 680px;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #4a8fff, transparent);
+    }
+
+    .pricing-amount {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-amount span {
+      font-size: 1.5rem;
+      color: #4a8fff;
+      font-weight: 600;
+    }
+
+    .pricing-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(74,143,255,0.2);
+      border: 1px solid rgba(74,143,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: #4a8fff;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center;
+      padding: 120px 5%;
+      background: linear-gradient(180deg, transparent, rgba(26,60,143,0.12), transparent);
+    }
+
+    .final-cta .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .final-cta .section-body {
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 5%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo { height: 28px; width: auto; }
+
+    .footer-right {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .footer-right a {
+      color: rgba(100,140,255,0.8);
+      text-decoration: none;
+    }
+
+    .footer-right a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .stat-row, .benefit-grid { grid-template-columns: 1fr; }
+      .step-item { grid-template-columns: 48px 1fr; gap: 1rem; }
+      .pricing-card { padding: 2rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Nav -->
+  <nav>
+    <img src="logo.png" alt="Aetherno" class="nav-logo" />
+    <a href="https://calendly.com/george-aetherno/30min" target="_blank" class="nav-btn">Book a Free Call</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <p class="hero-eyebrow">AI Voice Automation for HVAC Companies</p>
+    <h1 class="hero-title">
+      Every call answered.<br/>
+      <span>Every lead booked.</span><br/>
+      24/7.
+    </h1>
+    <p class="hero-sub">
+      We install an AI caller for your HVAC business that answers every incoming call, qualifies the lead, and books the appointment automatically — day or night, no staff needed.
+    </p>
+    <div class="hero-cta">
+      <a href="https://calendly.com/george-aetherno/30min" target="_blank" class="btn-primary">Book a Free 20-Minute Call</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-dot"></div> No monthly retainers</div>
+      <div class="badge"><div class="badge-dot"></div> Pay per appointment only</div>
+      <div class="badge"><div class="badge-dot"></div> Zero setup risk</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Problem -->
+  <section class="problem">
+    <div class="section-inner">
+      <span class="section-label reveal">The Problem</span>
+      <h2 class="section-title reveal">Every missed call is a job<br/>you didn't get.</h2>
+      <p class="section-body reveal">
+        When a homeowner's AC breaks in July, they don't leave voicemails. They call down the list until someone answers. If that someone isn't you, the job goes to your competitor — every single time.
+      </p>
+      <div class="stat-row">
+        <div class="stat-card reveal">
+          <div class="stat-number">27<span>%</span></div>
+          <div class="stat-desc">of inbound calls go unanswered at the average HVAC company</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number">5<span>min</span></div>
+          <div class="stat-desc">is the critical window to contact a lead before conversion drops 80%</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number">24<span>/7</span></div>
+          <div class="stat-desc">is when your leads call — including nights, weekends, and holidays</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Solution -->
+  <section class="solution">
+    <div class="section-inner">
+      <span class="section-label reveal">The Solution</span>
+      <h2 class="section-title reveal">Your AI receptionist.<br/>Always on.</h2>
+      <p class="section-body reveal">
+        Aetherno installs an AI voice caller on your business line that answers every incoming call instantly — 24 hours a day, 7 days a week. It qualifies the lead, confirms the appointment, and adds it straight to your calendar. You wake up to a full schedule without lifting a finger.
+      </p>
+      <div class="benefit-grid">
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">⚡</span>
+          <div class="benefit-title">Answers Instantly</div>
+          <div class="benefit-desc">Every call picked up on the first ring, day or night. No more missed opportunities after hours or on weekends.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">✓</span>
+          <div class="benefit-title">Qualifies the Lead</div>
+          <div class="benefit-desc">Confirms homeowner status, service area, and genuine HVAC need — so you only get real, bookable appointments.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">📅</span>
+          <div class="benefit-title">Books the Job</div>
+          <div class="benefit-desc">Appointment confirmed and added to your calendar automatically. No back and forth, no manual follow-up.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- How it works -->
+  <section class="steps">
+    <div class="section-inner">
+      <span class="section-label reveal">How It Works</span>
+      <h2 class="section-title reveal">Up and running<br/>in 48 hours.</h2>
+      <div class="step-list">
+        <div class="step-item reveal">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-content-title">We set everything up for you</div>
+            <div class="step-content-desc">We configure your AI caller, build the qualification script, and connect it to your business line. You don't touch a single technical setting.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-content-title">Calls forward to your AI</div>
+            <div class="step-content-desc">When a lead calls your business — after hours, on weekends, or whenever you're unavailable — the call routes seamlessly to your Aetherno AI caller.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-content-title">Lead gets qualified and booked</div>
+            <div class="step-content-desc">The AI qualifies the caller, confirms the details, and books them directly onto your calendar. You receive a notification with everything you need.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-content-title">You only pay for results</div>
+            <div class="step-content-desc">We charge a flat fee per qualified appointment booked. No monthly fees, no retainers, no risk. If we don't deliver, you don't pay.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="section-inner">
+      <span class="section-label reveal">Pricing</span>
+      <h2 class="section-title reveal">You only pay<br/>when we deliver.</h2>
+      <p class="section-body reveal">No monthly retainers. No setup fees. No contracts. A simple flat fee per qualified appointment booked — meaning if we don't deliver, you don't pay.</p>
+      <div class="pricing-card reveal">
+        <div class="pricing-amount"><span>$</span>50–75</div>
+        <div class="pricing-label">per qualified appointment booked</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="check">✓</div> No setup fee or monthly retainer</div>
+          <div class="pricing-feature"><div class="check">✓</div> Only pay for confirmed, qualified appointments</div>
+          <div class="pricing-feature"><div class="check">✓</div> No cancellations counted — only real bookings</div>
+          <div class="pricing-feature"><div class="check">✓</div> 24/7 coverage including nights and weekends</div>
+          <div class="pricing-feature"><div class="check">✓</div> Full setup and onboarding handled by us</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <span class="section-label reveal" style="display:block;text-align:center">Get Started</span>
+    <h2 class="section-title reveal">Ready to stop<br/>missing leads?</h2>
+    <p class="section-body reveal">
+      Book a free 20-minute call and we'll show you exactly how Aetherno works for your business. No pressure, no pitch — just a straight conversation about whether this is the right fit.
+    </p>
+    <div class="reveal">
+      <a href="https://calendly.com/george-aetherno/30min" target="_blank" class="btn-primary">Book a Free 20-Minute Call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <img src="logo.png" alt="Aetherno" class="footer-logo" />
+    <div class="footer-right">
+      <a href="mailto:george@aetherno.com">george@aetherno.com</a>
+      &nbsp;·&nbsp; © 2026 Aetherno. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Stars
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2 + 0.5;
+      s.style.cssText = `
+        width:${size}px;
+        height:${size}px;
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        --dur:${Math.random()*4+2}s;
+        --op:${Math.random()*0.6+0.1};
+        animation-delay:${Math.random()*5}s;
+      `;
+      starsEl.appendChild(s);
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
