@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FAQ — AETHERNO</title>
+  <meta name="description" content="Answers to common questions about AETHERNO's automated answering service."/>
+  <link rel="icon" type="image/png" href="logo_enhanched.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#1A3C8F;--blue-bright:#2b5fd0;--blue-lt:#8fb0f5;
+      --ease:cubic-bezier(.16,1,.3,1);--maxw:1080px;--radius:14px
+    }
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{font-family:"DM Sans",sans-serif;background:#fff;color:#1a1a2e;overflow-x:hidden;line-height:1.6}
+    ::selection{background:rgba(26,60,143,.12)}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 5%;background:#000;border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-logo-link{display:flex;align-items:center;text-decoration:none}
+    .nav-wings{height:62px;width:auto;display:block;mix-blend-mode:screen;transition:opacity .2s var(--ease)}
+    .nav-logo-link:hover .nav-wings{opacity:.7}
+    .nav-back{font-family:"Hanken Grotesk",sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s var(--ease)}
+    .nav-back:hover{color:#fff}
+    .nav-back svg{width:16px;height:16px}
+
+    /* HERO */
+    .faq-hero{background:linear-gradient(160deg,#000 0%,#050e22 100%);padding:140px 6% 70px}
+    .faq-hero-inner{max-width:var(--maxw);margin:0 auto}
+    .faq-label{font-family:"Hanken Grotesk",sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(143,176,245,.9);display:block;margin-bottom:1.1rem}
+    .faq-title{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.06;letter-spacing:-.032em;color:#fff;margin-bottom:1.2rem}
+    .faq-sub{font-size:1.1rem;font-weight:400;line-height:1.72;color:rgba(255,255,255,.6);max-width:540px;margin-bottom:0}
+    .faq-sub a{color:rgba(143,176,245,.9);text-decoration:none;font-weight:600;transition:opacity .2s var(--ease)}
+    .faq-sub a:hover{opacity:.75}
+
+    /* FAQ ACCORDION */
+    .faq-body{padding:clamp(40px,7vw,80px) 6% clamp(80px,10vw,120px);max-width:860px;margin:0 auto}
+    .faq-item{border-bottom:1px solid rgba(0,0,0,.08)}
+    .faq-item:first-child{border-top:1px solid rgba(0,0,0,.08)}
+    .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.6rem 0;background:none;border:none;cursor:pointer;text-align:left;font-family:"Hanken Grotesk",sans-serif;font-size:1.05rem;font-weight:700;color:#0a1428;line-height:1.35;transition:color .2s var(--ease)}
+    .faq-q:hover{color:var(--blue-bright)}
+    .faq-q[aria-expanded="true"]{color:var(--blue-bright)}
+    .faq-icon{width:22px;height:22px;flex-shrink:0;color:rgba(0,0,0,.28);transition:transform .35s var(--ease),color .2s var(--ease)}
+    .faq-q:hover .faq-icon,.faq-q[aria-expanded="true"] .faq-icon{color:var(--blue-bright)}
+    .faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+    .faq-a{overflow:hidden;max-height:0;transition:max-height .45s var(--ease)}
+    .faq-a.open{max-height:800px}
+    .faq-a-inner{padding-bottom:1.8rem}
+    .faq-a-inner p{font-size:1rem;line-height:1.78;color:rgba(0,0,0,.58);font-weight:400;max-width:720px}
+
+    /* FOOTER */
+    footer{background:#000;padding:2.6rem 6%;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem}
+    .footer-logo{height:40px;width:auto;opacity:.92}
+    .footer-right{font-size:13px;color:rgba(255,255,255,.42);font-weight:400}
+    .footer-right a{color:rgba(143,176,245,.75);text-decoration:none;transition:color .2s var(--ease)}
+    .footer-right a:hover{color:#fff}
+
+    @media(max-width:600px){
+      .faq-hero{padding:110px 6% 50px}
+      .faq-q{font-size:.95rem;padding:1.4rem 0}
+      footer{flex-direction:column;text-align:center;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo-link" href="index.html">
+      <img src="logo_wings_only.png" alt="AETHERNO" class="nav-wings"/>
+    </a>
+    <div></div>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to site
+    </a>
+  </nav>
+
+  <div class="faq-hero">
+    <div class="faq-hero-inner">
+      <span class="faq-label">FAQ</span>
+      <h1 class="faq-title">Frequently asked<br/>questions.</h1>
+      <p class="faq-sub">Can't find what you're looking for? <a href="mailto:contact@aetherno.com">Contact us</a>.</p>
+    </div>
+  </div>
+
+  <div class="faq-body">
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What exactly does the answering service do?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>It picks up every call you miss, whether after hours, on weekends, or while you're on a job. It greets the caller naturally, finds out what they need, and books the appointment straight to your calendar. You get a notification with the caller's name, their service need, and the confirmed time. You don't touch anything.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Does it actually sound like a real person, or obviously robotic?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>It sounds like a real person. Not a phone tree, not "press 1 for service." A natural back-and-forth conversation. The caller hears a professional greeting with your business name and speaks to an agent that responds to what they say, not a script they have to navigate.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Can it handle different types of calls — repairs, installs, tune-ups?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Yes. The agent is built specifically for your business: your services, your coverage area, your hours. It knows what you offer, what you don't, and how to handle each situation. If a call falls outside what you cover, the agent handles that too.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Do I need to change my phone number or buy new equipment?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>No. Your number stays the same. Nothing about how you operate changes. We set up call forwarding rules on your existing line. When you don't pick up, the call routes to your AETHERNO agent. When you do pick up, nothing happens.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How do you connect it to my phone line?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Through standard call forwarding, the same feature already built into your phone carrier. We walk you through setting it up in a few minutes during onboarding. No hardware, no new apps, no technical knowledge needed on your end.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How does it book appointments — does it connect to my calendar?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Yes. During onboarding we connect the agent to your calendar. When a caller confirms a time, the appointment gets created automatically with their name, number, address, and service need. You'll also get a notification the moment it's booked.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        I don't use a virtual calendar. I write my appointments down on paper. Does this still work?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Not a problem. If you'd rather not use a digital calendar, you'll get a text notification with the full appointment details every time a booking comes in: caller name, service need, date, and time. Same information, delivered however works best for you.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What happens if a caller asks something the agent doesn't know?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>It stays honest without embarrassing your business. If someone asks something outside what we've built into the agent, it tells them the team will follow up with that detail and takes a message. It never makes up information.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What counts as a "qualified booked appointment"?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Four things all have to be true: the caller has a genuine service need, they're within your service area, a specific date and time is confirmed, and the appointment isn't cancelled. If any one of those isn't met, you don't get charged.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Are there any setup fees, monthly fees, or contracts?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>None. No setup fee, no monthly retainer, no long-term commitment. You pay $70 per qualified appointment booked. Nothing else.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        I'd prefer a fixed monthly fee. Is that possible?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Yes, but not from day one. We'd first need to see your call volume and booking patterns in action so we can structure a flat rate that's fair to both sides. Once we have real numbers from a few weeks of live data, we'll work out a monthly fee that makes sense for your business.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How do I know how many appointments were booked?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>You get a shared tracking sheet that's updated in real time: every call logged, every booking recorded, with the caller's details and a link to the call recording. Full visibility, always.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How long does setup take?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>We go live within 48 hours of onboarding. Onboarding itself takes less than 30 minutes. We ask you a few questions about your services, area, and schedule, and we handle everything from there.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Can I listen to the calls?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Yes. Every call the agent handles is recorded and linked in your tracking sheet. You can listen to any of them at any time.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What if the agent makes a mistake or books the wrong thing?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>We monitor performance and fix issues fast. If a booking error happens, you flag it in the tracking sheet and we correct it. You won't be charged for any appointment that doesn't meet the qualification definition.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Can I customize what the agent says?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Yes. The agent is built around your business: your services, your hours, your specific rules. If something needs to change after we go live, you tell us and we update it. You don't touch the backend.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Why is this better than just hiring a receptionist?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>A receptionist costs $2,500 to $3,500 a month and still doesn't cover nights, weekends, or holidays. AETHERNO is on 24/7, costs nothing unless it books jobs, and never calls in sick or asks for a day off. For most service businesses, the math isn't close.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What if I already have someone answering my calls during the day?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>No conflict. The agent works as a safety net, only activating when a call goes unanswered, your line is busy, or whoever's on the phones isn't available. It catches the calls you're missing without interfering with what you already have in place.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        How is this different from a voicemail or an answering service?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Voicemail: most people don't leave one, and the ones who do have usually called someone else by the time you call back. Traditional answering services take messages — they don't book jobs. AETHERNO books the appointment in real time, while the caller is still on the line.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What if I want to stop? Is there a cancellation penalty?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>None. You can cancel anytime. You owe for appointments already booked up to that date, and the agent is disconnected within 24 hours. That's it.</p></div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        What types of businesses is AETHERNO compatible with?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner"><p>Any service business that runs on inbound calls and booked appointments. AETHERNO specializes in HVAC and roofing companies, but the service works for any similar operation: plumbing, electrical, and other home service trades included.</p></div></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <img src="logo_full_white.png" alt="AETHERNO" class="footer-logo"/>
+    <div class="footer-right">
+      <a href="mailto:info@aetherno.com">info@aetherno.com</a>
+      &nbsp;&middot;&nbsp;<a href="privacy.html">Privacy Policy</a>
+      &nbsp;&middot;&nbsp; &copy; 2026 AETHERNO. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var expanded=this.getAttribute('aria-expanded')==='true';
+        document.querySelectorAll('.faq-q').forEach(function(b){
+          b.setAttribute('aria-expanded','false');
+          b.nextElementSibling.classList.remove('open');
+        });
+        if(!expanded){
+          this.setAttribute('aria-expanded','true');
+          this.nextElementSibling.classList.add('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
