@@ -25,20 +25,12 @@
       align-items:center;padding:0 5%;
       background:#000;border-bottom:1px solid rgba(255,255,255,.07)
     }
-    .nav-wings{height:44px;width:auto;mix-blend-mode:screen}
-    .nav-home{
-      font-family:"Hanken Grotesk",sans-serif;font-size:14px;font-weight:500;
-      color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.01em;
-      transition:color .2s
-    }
-    .nav-home:hover{color:#fff}
-    .nav-btn{
-      font-family:"Hanken Grotesk",sans-serif;font-size:14px;font-weight:600;
-      color:#fff;background:var(--blue);border:none;padding:10px 22px;
-      border-radius:9px;cursor:pointer;text-decoration:none;
-      transition:background .25s var(--ease)
-    }
-    .nav-btn:hover{background:var(--blue-bright)}
+    .nav-logo-link{display:flex;align-items:center;text-decoration:none}
+    .nav-wings{height:62px;width:auto;display:block;mix-blend-mode:screen;transition:opacity .2s var(--ease)}
+    .nav-logo-link:hover .nav-wings{opacity:.7}
+    .nav-back{font-family:"Hanken Grotesk",sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s var(--ease)}
+    .nav-back:hover{color:#fff}
+    .nav-back svg{width:16px;height:16px}
     .page-hero{
       background:linear-gradient(160deg,#000 0%,#050e22 100%);
       padding:80px 6% 60px;text-align:center
@@ -71,7 +63,7 @@
       border-top:1px solid var(--navy-line);
       display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem
     }
-    .footer-logo{height:40px;width:auto;opacity:.92}
+    .footer-logo{height:36px;width:auto;opacity:.85;mix-blend-mode:screen}
     .footer-right{font-size:13px;color:var(--on-navy-faint)}
     .footer-right a{color:rgba(143,176,245,.85);text-decoration:none}
     .footer-right a:hover{color:#fff}
@@ -82,20 +74,23 @@
 </head>
 <body>
   <nav>
-    <img src="logo_wings_only.png" alt="AETHERNO" class="nav-wings"/>
-    <div style="display:flex;justify-content:center">
-      <a href="index.html" class="nav-home">&larr; Back to Home</a>
-    </div>
-    <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="nav-btn">Book a Free Call</a>
+    <a class="nav-logo-link" href="index.html" aria-label="Back to AETHERNO homepage">
+      <img src="logo_wings_only.png" alt="AETHERNO" class="nav-wings"/>
+    </a>
+    <div></div>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to site
+    </a>
   </nav>
 
   <div class="page-hero">
     <h1>Privacy Policy</h1>
-    <p>Last updated: June 4, 2026</p>
+    <p>Last updated: June, 2026</p>
   </div>
 
   <div class="content">
-    <div class="notice">This policy applies to the AETHERNO website (aetherno.com) and any services provided by AETHERNO. Please read it carefully. If you have questions, contact us at <a href="mailto:info@aetherno.com">info@aetherno.com</a>.</div>
+    <div class="notice">This policy applies to the AETHERNO website (aetherno.com) and any services provided by AETHERNO. Please read it carefully. If you have questions, reach us at <a href="mailto:contact@aetherno.com">contact@aetherno.com</a>.</div>
 
     <h2>1. Who We Are</h2>
     <p>AETHERNO ("we," "us," or "our") provides AI voice automation services for businesses. We operate from Athens, Greece, and serve clients primarily in the United States. Our website is <a href="https://aetherno.com">aetherno.com</a>.</p>
@@ -167,13 +162,13 @@
     <h2>12. Contact Us</h2>
     <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
     <ul>
-      <li>Email: <a href="mailto:info@aetherno.com">info@aetherno.com</a></li>
+      <li>Email: <a href="mailto:contact@aetherno.com">contact@aetherno.com</a></li>
       <li>Website: <a href="https://aetherno.com">aetherno.com</a></li>
     </ul>
   </div>
 
   <footer>
-    <img src="logo_full_white.png" alt="AETHERNO" class="footer-logo"/>
+    <img src="logo.png" alt="AETHERNO" class="footer-logo"/>
     <div class="footer-right">
       <a href="mailto:info@aetherno.com">info@aetherno.com</a>
       &nbsp;&middot;&nbsp; &copy; 2026 AETHERNO. All rights reserved.
