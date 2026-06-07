@@ -35,9 +35,7 @@
 
     /* BUTTONS */
     .btn-primary{display:inline-flex;align-items:center;gap:.55rem;font-family:"Hanken Grotesk",sans-serif;font-size:16px;font-weight:600;color:#fff;background:var(--blue);padding:16px 36px;border-radius:11px;text-decoration:none;border:none;box-shadow:0 4px 20px rgba(26,60,143,.35);transition:background .25s var(--ease),transform .25s var(--ease),box-shadow .3s var(--ease)}
-    .btn-primary svg{width:17px;height:17px;transition:transform .25s var(--ease)}
     .btn-primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 14px 38px rgba(26,60,143,.45)}
-    .btn-primary:hover svg{transform:translateX(3px)}
     .btn-primary.on-dark{box-shadow:0 6px 30px rgba(43,95,208,.5)}
     .btn-primary.on-dark:hover{box-shadow:0 16px 50px rgba(43,95,208,.65)}
 
@@ -64,7 +62,6 @@
     .hero-phone{display:flex;justify-content:center;align-items:center;position:relative;opacity:0;animation:fadeUp .9s var(--ease) forwards .30s}
     .hero-phone::before{content:"";position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(26,60,143,.42) 0%,transparent 68%);pointer-events:none;z-index:0}
 
-    /* PHONE WRAP — perspective container + float */
     .phone-wrap{
       position:relative;z-index:1;
       animation:floatPhone 6s ease-in-out infinite;
@@ -92,9 +89,7 @@
     .phone::before{content:"";position:absolute;left:-2.5px;top:100px;width:3px;height:28px;background:#b0bfd4;border-radius:0 2px 2px 0;box-shadow:0 46px 0 #b0bfd4}
     .phone::after{content:"";position:absolute;right:-2.5px;top:130px;width:3px;height:58px;background:#b0bfd4;border-radius:2px 0 0 2px}
 
-    /* Dynamic Island */
     .phone-island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:118px;height:32px;background:#000;border-radius:20px;z-index:10}
-    /* Screen */
     .phone-screen{position:absolute;inset:4px;border-radius:40px;background:linear-gradient(175deg,#141414 0%,#1c1c1e 100%);overflow:hidden;display:flex;flex-direction:column;align-items:center}
     .p-statusbar{width:100%;display:flex;justify-content:space-between;align-items:center;padding:14px 20px 0;font-size:11.5px;font-weight:700;color:#fff;letter-spacing:.01em}
     .p-statusicons{display:flex;align-items:center;gap:3px}
@@ -127,24 +122,9 @@
     .section-head.center{margin:0 auto;text-align:center}
     .section-label{font-family:"Hanken Grotesk",sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-lt);display:block;margin-bottom:1.1rem}
     .section-title{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(1.85rem,3.5vw,3rem);font-weight:800;line-height:1.12;letter-spacing:-.024em;color:#fff;margin-bottom:1.2rem}
+    .section-title em{font-style:normal;color:var(--blue-lt)}
     .section-body{font-size:1.1rem;font-weight:400;line-height:1.78;color:rgba(255,255,255,.68);max-width:620px}
     .section-head.center .section-body{margin-left:auto;margin-right:auto}
-    .problem{background:linear-gradient(165deg,#070f20 0%,#0c1d3a 100%)}
-    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
-    .stat-card{border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:2.2rem 1.8rem;background:rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s var(--ease),background .4s var(--ease)}
-    .stat-card:hover{transform:translateY(-5px);border-color:rgba(143,176,245,.45);background:rgba(255,255,255,.07)}
-    .stat-number{font-family:"Hanken Grotesk",sans-serif;font-size:3rem;font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1;margin-bottom:.7rem}
-    .stat-number span{color:var(--blue-lt)}
-    .stat-desc{font-size:14px;color:rgba(255,255,255,.52);line-height:1.6;font-weight:400}
-    .solution{background:linear-gradient(165deg,#060e1e 0%,#091626 100%)}
-    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
-    .benefit-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2.4rem 2rem;background:rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
-    .benefit-card:hover{transform:translateY(-5px);border-color:rgba(143,176,245,.28);box-shadow:0 22px 48px rgba(0,0,0,.35)}
-    .benefit-icon{width:52px;height:52px;border-radius:13px;background:rgba(26,60,143,.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--blue-lt)}
-    .benefit-icon svg{width:25px;height:25px}
-    .benefit-title{font-family:"Hanken Grotesk",sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.01em}
-    .benefit-desc{font-size:15px;color:rgba(255,255,255,.62);line-height:1.7;font-weight:400}
-    .steps{background:linear-gradient(158deg,#050d1c 0%,#0a1628 100%)}
     .step-list{margin-top:3.5rem;display:flex;flex-direction:column}
     .step-item{display:grid;grid-template-columns:88px 1fr;gap:2.2rem;padding:2.3rem 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:start}
     .step-item:first-child{padding-top:0}.step-item:last-child{border-bottom:none;padding-bottom:0}
@@ -152,22 +132,29 @@
     .step-content-title{font-family:"Hanken Grotesk",sans-serif;font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:.5rem;letter-spacing:-.01em}
     .step-content-desc{font-size:15px;color:rgba(255,255,255,.62);line-height:1.72;font-weight:400;max-width:640px}
     .pricing{background:linear-gradient(162deg,#070f1e 0%,#09152a 100%)}
-    .pricing-card{margin:3.5rem auto 0;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:clamp(2.2rem,5vw,3.4rem);background:rgba(255,255,255,.05);position:relative;overflow:hidden;max-width:640px;box-shadow:0 30px 70px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)}
+    .pricing-card-wrap{max-width:580px;margin:3.5rem auto 0;position:relative}
+    .pricing-card{border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:clamp(2.2rem,5vw,3.2rem);background:rgba(255,255,255,.04);box-shadow:0 30px 70px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.07);position:relative;overflow:hidden}
     .pricing-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-bright))}
-    .pricing-amount{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(3.2rem,6vw,4.8rem);font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em;margin-bottom:.4rem}
-    .pricing-amount .cur{font-size:.45em;color:var(--blue-lt);font-weight:700;vertical-align:super}
-    .pricing-label{font-size:15px;color:rgba(255,255,255,.42);margin-bottom:2.2rem;font-weight:400}
-    .pricing-divider{height:1px;background:rgba(255,255,255,.10);margin-bottom:2.2rem}
-    .pricing-features{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.4rem}
-    .pricing-feature{display:flex;align-items:center;gap:.85rem;font-size:15.5px;color:rgba(255,255,255,.82);font-weight:400}
-    .check{width:22px;height:22px;border-radius:50%;background:rgba(26,60,143,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-lt)}
-    .check svg{width:12px;height:12px}
-    .final-cta{text-align:center;background:linear-gradient(165deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;position:relative;overflow:hidden}
-    .final-cta .glow{position:absolute;width:760px;height:760px;max-width:130vw;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(43,95,208,.30) 0%,transparent 62%);pointer-events:none}
-    /* Explicit centering for all CTA inner content */
-    .final-cta .section-inner{position:relative;z-index:1;text-align:center}
-    .final-cta .section-title,.final-cta .section-body,.final-cta .section-label{text-align:center}
-    .final-cta .section-body{margin:0 auto;margin-bottom:2.4rem}
+    .price-stamp{position:absolute;top:-24px;right:-24px;width:84px;height:84px;border-radius:50%;border:2.5px dashed rgba(143,176,245,.55);background:#0a1428;display:flex;align-items:center;justify-content:center;transform:rotate(-15deg);z-index:2;box-shadow:0 4px 18px rgba(0,0,0,.5)}
+    .price-stamp-text{font-family:"Hanken Grotesk",sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-lt);text-align:center;line-height:1.5}
+    .price-amount{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(4rem,8vw,6rem);font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em;margin-bottom:.4rem}
+    .price-amount .cur{font-size:.38em;color:var(--blue-lt);font-weight:700;vertical-align:super}
+    .price-label{font-size:14px;color:rgba(255,255,255,.4);font-weight:400;margin-bottom:2.2rem}
+    .price-sep{height:1px;background:rgba(255,255,255,.1);margin-bottom:2.2rem}
+    .price-checklist{display:flex;flex-direction:column;gap:.95rem;margin-bottom:2.4rem}
+    .price-check-item{display:flex;align-items:center;gap:.85rem;font-size:15.5px;color:rgba(255,255,255,.82);font-weight:400}
+    .price-check-icon{width:22px;height:22px;border-radius:50%;background:rgba(26,60,143,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-lt)}
+    .price-check-icon svg{width:12px;height:12px}
+    .pricing-card .btn-primary{display:flex;margin:0 auto}
+    .calc-prompt-card{max-width:580px;margin:1.5rem auto 0;border:1px solid rgba(143,176,245,.15);border-radius:var(--radius);padding:2rem 2.4rem;background:rgba(26,60,143,.08);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.5rem;position:relative;overflow:hidden;transition:border-color .4s var(--ease)}
+    .calc-prompt-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(143,176,245,.45),transparent)}
+    .calc-prompt-card:hover{border-color:rgba(143,176,245,.28)}
+    .calc-prompt-text{font-size:1rem;line-height:1.72;color:rgba(255,255,255,.62);font-weight:400}
+    .calc-prompt-text a{color:var(--blue-lt);text-decoration:none;font-weight:600;transition:opacity .2s var(--ease)}
+    .calc-prompt-text a:hover{opacity:.75}
+    .faq-nudge{text-align:center;margin-top:1.8rem;font-size:15px;color:rgba(255,255,255,.42);font-weight:400}
+    .faq-nudge a{color:var(--blue-lt);text-decoration:none;font-weight:600;transition:opacity .2s var(--ease)}
+    .faq-nudge a:hover{opacity:.7}
     footer{background:#000;padding:2.6rem 6%;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem}
     .footer-logo{height:40px;width:auto;opacity:.92}
     .footer-right{font-size:13px;color:rgba(255,255,255,.42);font-weight:400}
@@ -184,6 +171,48 @@
     .cookie-more:hover{color:rgba(255,255,255,.8)}
     .cookie-accept{background:var(--blue);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:14px;font-weight:600;font-family:"Hanken Grotesk",sans-serif;cursor:pointer;transition:background .2s var(--ease)}
     .cookie-accept:hover{background:var(--blue-bright)}
+
+    /* ─── SOL-OVERVIEW: new Solution section ─── */
+    .sol-overview{background:linear-gradient(165deg,#060d1c 0%,#091828 100%)}
+    .how-it-works{background:linear-gradient(160deg,#071120 0%,#0d1e38 100%)}
+    .why-section{background:linear-gradient(162deg,#060e20 0%,#0c1c36 100%)}
+    .why-body{font-size:1.05rem;font-weight:400;line-height:1.78;color:rgba(255,255,255,.62);margin-top:2rem}
+    .why-body strong{color:rgba(255,255,255,.92);font-weight:600}
+    .why-pull{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(1.25rem,2.5vw,1.6rem);font-weight:700;color:#fff;line-height:1.4;margin:2.5rem 0;padding-left:1.5rem;border-left:3px solid var(--blue-lt)}
+    .why-pull em{font-style:normal;color:var(--blue-lt)}
+    .why-subtitle{font-family:"Hanken Grotesk",sans-serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:800;color:#fff;letter-spacing:-.018em;margin-top:3.5rem;margin-bottom:1.4rem}
+    .fix-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .fix-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2rem;background:rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s var(--ease)}
+    .fix-card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.15)}
+    .fix-card-icon{width:42px;height:42px;border-radius:11px;background:rgba(255,80,80,.12);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;color:rgba(255,100,100,.7)}
+    .fix-card-icon svg{width:20px;height:20px}
+    .fix-card-title{font-family:"Hanken Grotesk",sans-serif;font-size:1.05rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:.5rem}
+    .fix-card-desc{font-size:14.5px;color:rgba(255,255,255,.52);line-height:1.65}
+    .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .diff-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2rem;background:rgba(255,255,255,.04);transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+    .diff-card:hover{transform:translateY(-5px);border-color:rgba(143,176,245,.28);box-shadow:0 22px 48px rgba(0,0,0,.35)}
+    .diff-card-icon{width:42px;height:42px;border-radius:11px;background:rgba(26,60,143,.28);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;color:var(--blue-lt)}
+    .diff-card-icon svg{width:20px;height:20px}
+    .diff-card-title{font-family:"Hanken Grotesk",sans-serif;font-size:1.05rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:.5rem}
+    .diff-card-desc{font-size:14.5px;color:rgba(255,255,255,.52);line-height:1.65}
+    .sol-main-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .sol-left{display:flex;flex-direction:column}
+    .sol-right{display:flex;flex-direction:column;gap:1.25rem}
+    .sol-text-block{margin-top:2rem;display:flex;flex-direction:column;gap:1.1rem}
+    .sol-text-block p{font-size:1.05rem;font-weight:400;line-height:1.78;color:rgba(255,255,255,.62)}
+    .sol-deliverables{margin:2.8rem auto 0;padding:2rem 2.4rem;border:1px solid rgba(143,176,245,.14);border-radius:var(--radius);background:rgba(26,60,143,.10);max-width:720px}
+    .sol-del-label{font-family:"Hanken Grotesk",sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-lt);display:block;margin-bottom:1.1rem}
+    .sol-del-list{display:flex;flex-direction:column;gap:.85rem}
+    .sol-del-item{display:flex;align-items:flex-start;gap:.85rem;font-size:15px;color:rgba(255,255,255,.75);font-weight:400;line-height:1.65}
+    .sol-del-item svg{width:16px;height:16px;color:var(--blue-lt);flex-shrink:0;margin-top:3px}
+    .promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+    .promise-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2.4rem 2rem;background:rgba(255,255,255,.04);position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+    .promise-card::before{display:none}
+    .promise-card:hover{transform:translateY(-5px);border-color:rgba(143,176,245,.28);box-shadow:0 22px 48px rgba(0,0,0,.35)}
+    .promise-icon{width:52px;height:52px;border-radius:13px;background:rgba(26,60,143,.28);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--blue-lt)}
+    .promise-icon svg{width:25px;height:25px}
+    .promise-title{font-family:"Hanken Grotesk",sans-serif;font-size:1.15rem;font-weight:700;color:#fff;line-height:1.35;letter-spacing:-.01em}
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
     @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(143,176,245,.5)}70%{box-shadow:0 0 0 8px rgba(143,176,245,0)}100%{box-shadow:0 0 0 0 rgba(143,176,245,0)}}
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
@@ -195,7 +224,8 @@
       .hero-eyebrow{margin-left:auto;margin-right:auto}
       .hero-sub{max-width:100%}
       .hero-badges{justify-content:center}
-      .stat-row,.benefit-grid{grid-template-columns:1fr;gap:1rem}
+      .promise-grid{grid-template-columns:1fr;gap:1rem}
+      .sol-main-grid,.fix-grid,.diff-grid{grid-template-columns:1fr;gap:2rem}
     }
     @media(max-width:600px){
       nav{padding:0 4%}.nav-links{gap:1rem}.nav-links a{font-size:13px}.nav-btn{padding:9px 14px;font-size:13px}
@@ -213,7 +243,7 @@
       <img src="logo_wings_only.png" alt="AETHERNO" class="nav-wings"/>
     </a>
     <div class="nav-links">
-      <a href="#about">About</a><a href="#plans">Plans</a><a href="#pricing">Pricing</a>
+      <a href="#solution">Solution</a><a href="#how-it-works">How it works</a><a href="#why">Why AETHERNO?</a><a href="#pricing">Pricing</a>
     </div>
     <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="nav-btn">Book a Free Call</a>
   </nav>
@@ -242,7 +272,6 @@
         <div class="hero-cta">
           <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="btn-primary">
             Book a Free Call
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
         <div class="hero-badges">
@@ -254,12 +283,11 @@
 
       <div class="hero-phone">
         <div class="phone-wrap">
-            <!-- Silver iPhone -->
             <div class="phone">
               <div class="phone-island"></div>
               <div class="phone-screen">
                 <div class="p-statusbar">
-                  <span>9:41</span>
+                  <span id="phoneTime">9:41</span>
                   <div class="p-statusicons">
                     <div class="p-signal"><span></span><span></span><span></span><span></span></div>
                     <div class="p-battery"></div>
@@ -267,7 +295,7 @@
                 </div>
                 <div class="p-callinfo">
                   <div class="p-brand">AETHERNO</div>
-                  <div class="p-callstatus">On Call &middot; <span id="callTimer">00:47</span></div>
+                  <div class="p-callstatus">On Call &middot; <span id="callTimer">00:00</span></div>
                 </div>
                 <div class="p-wavebox">
                   <span style="height:5px;--d:0.90s;--del:0.00s"></span>
@@ -308,54 +336,176 @@
                 </div>
                 <div class="p-homebar"></div>
               </div>
-            </div><!-- /phone -->
-        </div><!-- /phone-wrap -->
-      </div><!-- /hero-phone -->
-    </div><!-- /hero-grid -->
-  </section>
-
-  <section class="problem">
-    <div class="section-inner">
-      <div class="section-head">
-        <span class="section-label reveal">The Problem</span>
-        <h2 class="section-title reveal">Every missed call is a job you didn't get.</h2>
-        <p class="section-body reveal">When customers need a service, they don't leave voicemails. They call down the list until someone answers. If that someone isn't you, the job goes to your competitor — every single time.</p>
-      </div>
-      <div class="stat-row">
-        <div class="stat-card reveal"><div class="stat-number">27<span>%</span></div><div class="stat-desc">of inbound calls go unanswered at the average business</div></div>
-        <div class="stat-card reveal"><div class="stat-number">5<span>min</span></div><div class="stat-desc">is the window to reach a lead before conversion drops sharply</div></div>
-        <div class="stat-card reveal"><div class="stat-number">24<span>/7</span></div><div class="stat-desc">is when your leads call — nights, weekends, and holidays included</div></div>
+            </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="solution" id="about">
+  <!-- ═══════════════════════════════════════════════
+       NEW: SOLUTION OVERVIEW SECTION
+  ════════════════════════════════════════════════ -->
+  <section class="sol-overview" id="solution">
     <div class="section-inner">
-      <div class="section-head">
-        <span class="section-label reveal">The Solution</span>
-        <h2 class="section-title reveal">Your receptionist. Always on.</h2>
-        <p class="section-body reveal">AETHERNO puts an automated answering service on your business line that picks up every call instantly — 24 hours a day. It qualifies the caller, confirms the details, and adds the appointment to your calendar. You wake up to a full schedule.</p>
+
+      <!-- Header: left-aligned, full width -->
+      <span class="section-label reveal">Solution</span>
+      <h2 class="section-title reveal">Your receptionist.<br/><em>Built for your business.<br/>Always on.</em></h2>
+
+      <!-- Body text: full width -->
+      <div class="sol-text-block">
+        <p class="reveal">AETHERNO sets up a fully automated answering service on your business line that picks up every call you miss — after hours, on weekends, while you're out on a job, or whenever you can't get to the phone.</p>
+        <p class="reveal">When a call comes in and you don't answer, it routes automatically to your AETHERNO agent. The agent greets the caller naturally, finds out what they need and books the appointment directly onto your calendar. You get a notification with the caller's name, their service need, and the confirmed time.</p>
+        <p class="reveal">If you pick up yourself, nothing happens. The agent only activates when you don't. It's a safety net on your existing line, not a change to how you run your business.</p>
+        <p class="reveal">AETHERNO specializes in service companies. Every agent is built specifically for your business — your services, your area, your hours, your rules. You don't need to move a finger.</p>
       </div>
-      <div class="benefit-grid">
-        <div class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="benefit-title">Answers instantly</div><div class="benefit-desc">Every call picked up on the first ring, day or night. No more missed jobs after hours or on weekends.</div></div>
-        <div class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="benefit-title">Sorts the caller</div><div class="benefit-desc">Confirms the service area and what they actually need — so you only get real, bookable appointments.</div></div>
-        <div class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="benefit-title">Books the job</div><div class="benefit-desc">Appointment confirmed and added to your calendar automatically. No back and forth, no manual follow-up.</div></div>
+
+      <!-- 3 promise cards: horizontal grid below text -->
+      <div class="promise-grid">
+        <div class="promise-card reveal">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="promise-title">Live within 48 hours. Works 24/7.</div>
+        </div>
+        <div class="promise-card reveal">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <div class="promise-title">Fully customizable to your business.</div>
+        </div>
+        <div class="promise-card reveal">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <div class="promise-title">Books jobs you could have missed.</div>
+        </div>
       </div>
+
+      <!-- What you get from day one — centered below everything -->
+      <div class="sol-deliverables reveal">
+        <span class="sol-del-label">What you get from day one</span>
+        <div class="sol-del-list">
+          <div class="sol-del-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Appointments booked straight to your calendar with full caller details
+          </div>
+          <div class="sol-del-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            A live tracking sheet showing every call and booking in real time
+          </div>
+          <div class="sol-del-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            A recording of every conversation the agent handles
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+  <!-- ═══════════════════════════════════════════════ -->
 
-  <section class="steps" id="plans">
+  <section class="how-it-works" id="how-it-works">
     <div class="section-inner">
       <div class="section-head">
         <span class="section-label reveal">How It Works</span>
-        <h2 class="section-title reveal">Up and running in 48 hours.</h2>
+        <h2 class="section-title reveal">Four steps.<br/><em>Set up once. Running forever.</em></h2>
       </div>
       <div class="step-list">
-        <div class="step-item reveal"><div class="step-num">01</div><div><div class="step-content-title">We set everything up for you</div><div class="step-content-desc">We configure your answering service, build the script around your business, and connect it to your line. You don't touch a single setting.</div></div></div>
-        <div class="step-item reveal"><div class="step-num">02</div><div><div class="step-content-title">Calls route to your line</div><div class="step-content-desc">When a lead calls — after hours, on weekends, or whenever you can't pick up — the call is answered for you, seamlessly.</div></div></div>
-        <div class="step-item reveal"><div class="step-num">03</div><div><div class="step-content-title">The lead gets sorted and booked</div><div class="step-content-desc">The caller is qualified, the details confirmed, and the appointment booked straight to your calendar. You get a notification with everything you need.</div></div></div>
-        <div class="step-item reveal"><div class="step-num">04</div><div><div class="step-content-title">You only pay for results</div><div class="step-content-desc">A flat fee per qualified appointment booked. No monthly fees, no retainers, no risk. If we don't deliver, you don't pay.</div></div></div>
+        <div class="step-item reveal">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-content-title">We get your details</div>
+            <div class="step-content-desc">We ask you a few straightforward questions: your services, your coverage area, your schedule, any specific rules for how calls should be handled.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-content-title">We build and connect</div>
+            <div class="step-content-desc">We script your agent around your business, set up your dedicated number, and configure the call forwarding rules on your existing line. Nothing about your number or your operations changes.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-content-title">A customer calls</div>
+            <div class="step-content-desc">The caller hears a professional greeting by your business name. To them, it's a normal call with your company. They have a full conversation, get their appointment confirmed, and hang up satisfied.</div>
+          </div>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-content-title">You carry on</div>
+            <div class="step-content-desc">No interruption. No action required on your end. The next time you check your calendar, the job is there.</div>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="why-section" id="why">
+    <div class="section-inner">
+
+      <div class="section-head">
+        <span class="section-label reveal">Why AETHERNO?</span>
+        <h2 class="section-title reveal">The math behind<br/><em>the problem.</em></h2>
+      </div>
+
+      <p class="why-body reveal">Here's what really happens when you don't pick up. Based on call tracking data, <strong>6 out of 10</strong> calls to small service businesses go unanswered. <strong>8 out of 10</strong> of those people won't leave a voicemail. They hang up and call the next name they find. The few who do leave a message? Most of them have already booked with someone else by the time you call back.</p>
+
+      <div class="why-pull reveal">That's not a few lost dollars a month.<br/><em>That's thousands.</em></div>
+
+      <h3 class="why-subtitle reveal">Why the usual fixes don't work.</h3>
+      <div class="fix-grid">
+        <div class="fix-card reveal">
+          <div class="fix-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div class="fix-card-title">Voicemail</div>
+          <div class="fix-card-desc">Most people won't leave one. The ones who do have usually booked someone else by the time you call back.</div>
+        </div>
+        <div class="fix-card reveal">
+          <div class="fix-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <div class="fix-card-title">Hiring a receptionist</div>
+          <div class="fix-card-desc">$2,500–$3,500 a month. Still doesn't cover nights, weekends, or holidays — when customers are calling.</div>
+        </div>
+      </div>
+
+      <h3 class="why-subtitle reveal">What's different about AETHERNO.</h3>
+      <div class="diff-grid">
+        <div class="diff-card reveal">
+          <div class="diff-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="diff-card-title">You only pay when we deliver.</div>
+          <div class="diff-card-desc">No setup fee. No monthly fee. One flat price per booked appointment. If nothing gets booked, you owe nothing. Zero risk.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="diff-card-title">AETHERNO does the work, not you.</div>
+          <div class="diff-card-desc">You don't need to learn any new software. Everything runs in the background — you just check your calendar.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="diff-card-title">Built for service businesses.</div>
+          <div class="diff-card-desc">Not a call center, not an app. A service made for businesses that live on the phone — service area, job types, after-hours, all built in.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          </div>
+          <div class="diff-card-title">Cancel anytime.</div>
+          <div class="diff-card-desc">No commitment. If you feel this is not the right fit, you can cancel immediately.</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -363,40 +513,53 @@
     <div class="section-inner">
       <div class="section-head center">
         <span class="section-label reveal">Pricing</span>
-        <h2 class="section-title reveal">You only pay when we deliver.</h2>
-        <p class="section-body reveal">No monthly retainers. No setup fees. No contracts. A simple flat fee per qualified appointment booked.</p>
+        <h2 class="section-title reveal">You only pay <em>when we deliver.</em></h2>
+        <p class="section-body reveal">No monthly retainers. No setup fees. Just a flat fee per qualified appointment.</p>
       </div>
-      <div class="pricing-card reveal">
-        <div class="pricing-amount"><span class="cur">$</span>70</div>
-        <div class="pricing-label">per qualified appointment booked</div>
-        <div class="pricing-divider"></div>
-        <div class="pricing-features">
-          <div class="pricing-feature"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> No setup fee or monthly retainer</div>
-          <div class="pricing-feature"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Only pay for confirmed, qualified appointments</div>
-          <div class="pricing-feature"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Cancellations don't count — only real bookings</div>
-          <div class="pricing-feature"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 24/7 coverage including nights and weekends</div>
-          <div class="pricing-feature"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Full setup and onboarding handled by us</div>
-        </div>
-        <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="btn-primary">
-          Book a Free Call
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <section class="final-cta">
-    <div class="glow"></div>
-    <div class="section-inner">
-      <span class="section-label reveal">Get Started</span>
-      <h2 class="section-title reveal">Ready to stop missing leads?</h2>
-      <p class="section-body reveal">Book a free call and we'll show you exactly how AETHERNO works — and set up a free two-week pilot so you can see the bookings for yourself.</p>
-      <div class="reveal">
-        <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="btn-primary on-dark">
-          Book a Free Call
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+      <div class="pricing-card-wrap reveal">
+        <div class="price-stamp">
+          <span class="price-stamp-text">ZERO<br/>RISK</span>
+        </div>
+        <div class="pricing-card">
+          <div class="price-amount"><span class="cur">$</span>70</div>
+          <div class="price-label">per qualified appointment booked</div>
+          <div class="price-sep"></div>
+          <div class="price-checklist">
+            <div class="price-check-item">
+              <span class="price-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              No setup fee or monthly retainer
+            </div>
+            <div class="price-check-item">
+              <span class="price-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Only pay for confirmed, qualified appointments
+            </div>
+            <div class="price-check-item">
+              <span class="price-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              24/7 coverage non-stop
+            </div>
+            <div class="price-check-item">
+              <span class="price-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Full setup and onboarding handled by us
+            </div>
+          </div>
+          <a href="https://calendly.com/george-aetherno/30min" target="_blank" rel="noopener" class="btn-primary on-dark">
+            Book a Free Call
+          </a>
+        </div>
       </div>
+
+      <div class="calc-prompt-card reveal">
+        <p class="calc-prompt-text">Not sure whether it is worth it? Do the math for your own business and see what you have been missing.</p>
+        <a href="calculator.html" class="btn-primary">Click here</a>
+      </div>
+
+      <div class="calc-prompt-card reveal">
+        <p class="calc-prompt-text">Want to test the product first? Send us an email at <a href="mailto:contact@aetherno.com">contact@aetherno.com</a> and we'll get it set up.</p>
+      </div>
+
+      <p class="faq-nudge reveal">Still have questions? <a href="faq.html">Click here</a></p>
+
     </div>
   </section>
 
@@ -430,13 +593,19 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
-    let secs = 47;
+    let secs = 0;
     const timerEl = document.getElementById("callTimer");
     setInterval(() => {
       secs++;
       const m = Math.floor(secs/60), s = secs%60;
       timerEl.textContent = (m<10?"0":"") + m + ":" + (s<10?"0":"") + s;
     }, 1000);
+    function updatePhoneTime(){
+      let t = new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago',hour:'numeric',minute:'2-digit',hour12:true});
+      document.getElementById('phoneTime').textContent = t.replace(/\s?(AM|PM)/i,'');
+    }
+    updatePhoneTime();
+    setInterval(updatePhoneTime,1000);
     function acceptCookies() {
       try { localStorage.setItem("aetherno_cookies","1"); } catch(e) {}
       const b = document.getElementById("cookie-banner");
